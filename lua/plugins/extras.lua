@@ -9,4 +9,5 @@ return {
   { import = "lazyvim.plugins.extras.coding.copilot" },
   { import = "lazyvim.plugins.extras.coding.copilot-chat" },
   { import = "lazyvim.plugins.extras.test.core" },
+  { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 }
