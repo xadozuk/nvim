@@ -8,7 +8,7 @@ vim.cmd("autocmd FileType ruby setlocal indentkeys-=.")
 
 vim.o.shell = "bash"
 
-vim.o.scrolloff = 8
+vim.o.scrolloff = 12
 
 -- vim.g.clipboard = {
 --   name = "win32yank-wsl",

@@ -7,6 +7,9 @@ local azdo_patterns = {
   "Pipelines/*.y*l",
   "azure-pipelines-templates/*.y*l",
   "azure-pipeline-templates/*.y*l",
+  "azdo-pipelines-library/*.y*l",
+  "steps/*.y*l",
+  "templates/*.y*l",
 }
 
 return {
@@ -14,7 +17,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "powershell",
         "yaml",
       },
     },
@@ -23,7 +25,6 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "powershell-editor-services",
         "azure-pipelines-language-server",
       },
     },
@@ -32,7 +33,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        powershell_es = {},
         azure_pipelines_ls = {
           root_dir = lspconfig.util.root_pattern(azdo_patterns),
           settings = {

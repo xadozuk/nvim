@@ -25,8 +25,8 @@ return {
       local cmp = require("cmp")
 
       -- Disable Enter to accept auto-completion
-      opts.mapping["<CR>"] = nil
-      opts.mapping["<S-CR>"] = cmp.mapping.confirm({ select = true })
+      -- opts.mapping["<CR>"] = nil
+      -- opts.mapping["<S-CR>"] = cmp.mapping.confirm({ select = true })
 
       -- opts.mapping = vim.tbl_extend("force", opts.mapping, {
       --   ["<Tab>"] = cmp.mapping(function(fallback)
