@@ -4,6 +4,8 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = { "onsails/lspkind.nvim" },
     opts = function(_, opts)
+      local cmp = require("cmp")
+
       local colors = {
         PmenuSel = { bg = "#282C34", fg = "NONE" },
         Pmenu = { fg = "#C5CDD9", bg = "#22252A" },
@@ -93,6 +95,27 @@ return {
           return kind
         end,
       }
+
+      opts.experimental.ghost_text = false
+
+      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+      -- cmp.setup.cmdline({ "/", "?" }, {
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = {
+      --     { name = "buffer" },
+      --   },
+      -- })
+
+      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      -- cmp.setup.cmdline(":", {
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = cmp.config.sources({
+      --     { name = "path" },
+      --   }, {
+      --     { name = "cmdline" },
+      --   }),
+      --   matching = { disallow_symbol_nonprefix_matching = false },
+      -- })
     end,
   },
 }

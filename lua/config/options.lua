@@ -6,7 +6,8 @@ vim.g.lazyvim_ruby_lsp = "solargraph"
 vim.g.lazyvim_ruby_formatter = "rubocop"
 vim.cmd("autocmd FileType ruby setlocal indentkeys-=.")
 
-vim.o.shell = "bash"
+-- vim.o.shell = "bash"
+vim.o.shellcmdflag = "-NoProfile -NoLogo -Command"
 
 vim.o.scrolloff = 12
 
@@ -22,3 +23,17 @@ vim.o.scrolloff = 12
 --   },
 --   cache_enabled = 1,
 -- }
+
+vim.o.clipboard = ""
+vim.g.clipboard = {
+  name = "WslClipboard",
+  copy = {
+    ["+"] = "clip.exe",
+    ["*"] = "clip.exe",
+  },
+  paste = {
+    ["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    ["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  },
+  cache_enabled = 1,
+}
