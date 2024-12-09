@@ -11,6 +11,14 @@ return {
         desc = "Continue",
       },
       {
+        -- Shift-F5
+        "<F17>",
+        function()
+          require("dap").terminate()
+        end,
+        desc = "Terminate",
+      },
+      {
         "<F8>",
         function()
           require("dap").step_into()

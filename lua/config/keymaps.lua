@@ -66,18 +66,18 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
   end,
 })
 
-vim.keymap.set("n", "<leader>rr", "<cmd>ToggleTermSetName<cr>", { desc = "Rename terminals" })
+vim.keymap.set("n", "<leader>r,", "<cmd>ToggleTermSetName<cr>", { desc = "Rename terminals" })
 
-vim.keymap.set("n", "<leader>r,", "<cmd>TermSelect<cr>", { desc = "Select terminals" })
+vim.keymap.set("n", "<leader>rl", "<cmd>TermSelect<cr>", { desc = "List terminals" })
 
-vim.keymap.set({ "n", "v" }, "<leader>rl", function()
+vim.keymap.set({ "n" }, "<leader>rr", function()
   require("toggleterm").send_lines_to_terminal("single_line", true, { args = vim.v.count })
 end, { desc = "Send current line to terminal" })
 
-vim.keymap.set("v", "<leader>rs", function()
+vim.keymap.set("v", "<leader>rr", function()
   require("toggleterm").send_lines_to_terminal("visual_selection", true, { args = vim.v.count })
 end, { desc = "Send selected text to terminal" })
 
-vim.keymap.set("v", "<leader>rS", function()
+vim.keymap.set("v", "<leader>rR", function()
   require("toggleterm").send_lines_to_terminal("visual_lines", true, { args = vim.v.count })
 end, { desc = "Send selected lines to terminal" })
