@@ -59,6 +59,21 @@ return {
         },
       }
 
+      opts.mapping["<S-CR>"] = nil
+
+      -- local src_indexes = {}
+      -- for i, src in ipairs(opts.sources) do
+      --   src_indexes[src.name] = i
+      -- end
+      --
+      -- local copilot_index = src_indexes["copilot"]
+      --
+      -- -- Add copilot at the end of sources so cmp suggestion are not at the top of the list
+      -- table.insert(opts.sources, opts.sources[copilot_index])
+      -- table.remove(opts.sources, copilot_index)
+
+      -- print(vim.inspect(opts.sources))
+
       opts.formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
