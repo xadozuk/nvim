@@ -1,5 +1,11 @@
 return {
   {
+    "lazyVim/LazyVim",
+    opts = {
+      colorscheme = "tokyonight-moon",
+    },
+  },
+  {
     "folke/tokyonight.nvim",
     opts = {
       transparent = true,
@@ -9,6 +15,7 @@ return {
       },
       on_highlights = function(hl, c)
         local prompt = "#2d3149"
+
         hl.TelescopeNormal = {
           bg = c.bg_dark,
           fg = c.fg_dark,
