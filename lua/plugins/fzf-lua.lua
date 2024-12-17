@@ -5,7 +5,12 @@ return {
   {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {},
+    opts = {
+      files = {
+        rg_opts = [[--color=never --files --follow -g "!.git"]],
+        fd_opts = [[--color=never --type f --follow --exclude .git]],
+      },
+    },
     keys = {
       { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
       { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
