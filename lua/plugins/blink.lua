@@ -1,6 +1,10 @@
 return {
   { import = "lazyvim.plugins.extras.coding.blink" },
   {
+    "saghen/blink.compat",
+    opts = {},
+  },
+  {
     "saghen/blink.cmp",
     opts = {
       appearance = {
