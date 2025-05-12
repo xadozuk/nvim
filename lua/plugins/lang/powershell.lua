@@ -54,4 +54,18 @@ return {
       end
     end,
   },
+  {
+    "saghen/blink.cmp",
+    opts = {
+      completion = {
+        accept = {
+          auto_brackets = {
+            kind_resolution = {
+              blocked_filetypes = { "ps1" },
+            },
+          },
+        },
+      },
+    },
+  },
 }

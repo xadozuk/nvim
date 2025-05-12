@@ -15,6 +15,11 @@ return {
         ["<C-y>"] = { "select_and_accept" },
       },
       completion = {
+        list = {
+          selection = {
+            preselect = false,
+          },
+        },
         ghost_text = {
           enabled = false,
         },
