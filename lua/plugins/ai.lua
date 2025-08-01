@@ -24,19 +24,18 @@ return {
       })
     end,
   },
-  { import = "lazyvim.plugins.extras.ai.copilot-chat" },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    opts = {
-      model = "claude-3.7-sonnet", -- Default model to use
-      mappings = {
-        complete = {
-          insert = "<Tab>",
-        },
-      },
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  },
+  -- { import = "lazyvim.plugins.extras.ai.copilot-chat" },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   opts = {
+  --     model = "claude-3.7-sonnet", -- Default model to use
+  --     mappings = {
+  --       complete = {
+  --         insert = "<Tab>",
+  --       },
+  --     },
+  --   },
+  -- },
   -- {
   --   "olimorris/codecompanion.nvim",
   --   keys = {
@@ -80,71 +79,71 @@ return {
   --     },
   --   },
 
-  -- {
-  --   "yetone/avante.nvim",
-  --   event = "VeryLazy",
-  --   version = false, -- Never set this value to "*"! Never!
-  --   opts = {
-  --     provider = "copilot",
-  --     providers = {
-  --       copilot = {
-  --         model = "claude-3.7-sonnet",
-  --       },
-  --     },
-  --     selector = {
-  --       provider = "snacks",
-  --       provider_opts = {},
-  --     },
-  --     input = {
-  --       provider = "snacks",
-  --       provider_opts = {
-  --         -- Additional snacks.input options
-  --         title = "Avante Input",
-  --         icon = " ",
-  --       },
-  --     },
-  --     windows = {
-  --       input = {
-  --         height = 16,
-  --       },
-  --     },
-  --     system_prompt = function()
-  --       local hub = require("mcphub").get_hub_instance()
-  --       return hub and hub:get_active_servers_prompt() or ""
-  --     end,
-  --     -- Using function prevents requiring mcphub before it's loaded
-  --     custom_tools = function()
-  --       return {
-  --         require("mcphub.extensions.avante").mcp_tool(),
-  --       }
-  --     end,
-  --   },
-  --   build = "make",
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     "ibhagwan/fzf-lua", -- for file_selector provider fzf
-  --     "folke/snacks.nvim", -- for input provider snacks
-  --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-  --     "zbirenbaum/copilot.lua", -- for providers='copilot'
-  --     {
-  --       "MeanderingProgrammer/render-markdown.nvim",
-  --       opts = {
-  --         file_types = { "markdown", "Avante" },
-  --       },
-  --       ft = { "markdown", "Avante" },
-  --     },
-  --     {
-  --       "folke/which-key.nvim",
-  --       opts = {
-  --         spec = {
-  --           { "<leader>a", group = "ai" },
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    opts = {
+      provider = "copilot",
+      providers = {
+        copilot = {
+          model = "claude-3.7-sonnet",
+        },
+      },
+      selector = {
+        provider = "snacks",
+        provider_opts = {},
+      },
+      input = {
+        provider = "snacks",
+        provider_opts = {
+          -- Additional snacks.input options
+          title = "Avante Input",
+          icon = " ",
+        },
+      },
+      windows = {
+        input = {
+          height = 16,
+        },
+      },
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub and hub:get_active_servers_prompt() or ""
+      end,
+      -- Using function prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
+    },
+    build = "make",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "folke/snacks.nvim", -- for input provider snacks
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+      {
+        "folke/which-key.nvim",
+        opts = {
+          spec = {
+            { "<leader>a", group = "ai" },
+          },
+        },
+      },
+    },
+  },
   -- {
   --   "saghen/blink.compat",
   --   lazy = true,
