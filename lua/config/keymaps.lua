@@ -16,8 +16,8 @@ end, { desc = "Lazygit (cwd)" })
 vim.keymap.set("n", "<leader>gl", function()
   Snacks.lazygit.log()
 end, { desc = "Lazygit Log" })
-vim.keymap.del("n", "<leader>gG")
-vim.keymap.del("n", "<leader>gL")
+-- vim.keymap.del("n", "<leader>gG")
+-- vim.keymap.del("n", "<leader>gL")
 
 vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 -- vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
@@ -48,9 +48,15 @@ wk.add({
   },
 })
 
-vim.keymap.set("n", "<leader>rh", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Open horizontal terminal" })
-vim.keymap.set("n", "<leader>rv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Open vertical terminal" })
-vim.keymap.set("n", "<leader>rf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Open float terminal" })
+vim.keymap.set("n", "<leader>rh", function()
+  return "<cmd>" .. vim.v.count .. "ToggleTerm direction=horizontal<cr>"
+end, { expr = true, desc = "Open horizontal terminal" })
+vim.keymap.set("n", "<leader>rv", function()
+  return "<cmd>ToggleTerm direction=vertical<cr>"
+end, { expr = true, desc = "Open vertical terminal" })
+vim.keymap.set("n", "<leader>rf", function()
+  return "<cmd>ToggleTerm direction=float<cr>"
+end, { expr = true, desc = "Open float terminal" })
 
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = { "term://*toggleterm*" },

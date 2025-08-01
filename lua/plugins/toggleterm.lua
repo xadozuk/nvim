@@ -3,7 +3,7 @@ return {
     "akinsho/toggleterm.nvim",
     opts = {
       open_mapping = [[<c-\>]],
-      shell = "pwsh",
+      -- shell = "pwsh",
       size = function(term)
         if term.direction == "horizontal" then
           return 20
