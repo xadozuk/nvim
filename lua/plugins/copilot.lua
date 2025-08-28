@@ -1,6 +1,6 @@
 return {
   -- { import = "lazyvim.plugins.extras.ai.copilot-chat" },
-  { import = "lazyvim.plugins.extras.ai.copilot" },
+  -- { import = "lazyvim.plugins.extras.ai.copilot" },
   {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
@@ -13,6 +13,10 @@ return {
         },
       },
       panel = { enabled = false },
+      filetypes = {
+        markdown = true,
+        help = true,
+      },
     },
   },
   {
