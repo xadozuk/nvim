@@ -4,6 +4,7 @@ local formatter = vim.g.lazyvim_ruby_formatter or "rubocop"
 return {
   -- Check treesitter config for blade support
   { import = "lazyvim.plugins.extras.lang.ruby" },
+  { import = "lazyvim.plugins.extras.lang.tailwind" },
   -- Avoid using mason because of ruby version management with mise
   {
     "neovim/nvim-lspconfig",
@@ -51,6 +52,33 @@ return {
     opts = {
       adapters = {
         ["neotest-minitest"] = {},
+      },
+    },
+  },
+  {
+    "tpope/vim-rails",
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stimulus-language-server",
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        stimulus_ls = {},
+      },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    ensure_installed = {
+      opts = {
+        "embedded_template",
       },
     },
   },
