@@ -62,7 +62,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
-        "stimulus-language-server",
+        "stimulus_ls",
       },
     },
   },
