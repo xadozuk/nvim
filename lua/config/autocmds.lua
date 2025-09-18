@@ -36,3 +36,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.keymap.set("n", "dd", Remove_qf_item, { noremap = true, buffer = true })
   end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "eruby.yaml" },
+  callback = function()
+    vim.bo.filetype = "yaml"
+  end,
+})

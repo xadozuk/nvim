@@ -10,7 +10,7 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
         "gh-actions-language-server",

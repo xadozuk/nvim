@@ -59,7 +59,7 @@ return {
     "tpope/vim-rails",
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
         "stimulus-language-server",
