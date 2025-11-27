@@ -2,9 +2,6 @@ local lsp = vim.g.lazyvim_ruby_lsp or "ruby_lsp"
 local formatter = vim.g.lazyvim_ruby_formatter or "rubocop"
 
 return {
-  -- Check treesitter config for blade support
-  { import = "lazyvim.plugins.extras.lang.ruby" },
-  { import = "lazyvim.plugins.extras.lang.tailwind" },
   -- Avoid using mason because of ruby version management with mise
   {
     "neovim/nvim-lspconfig",

@@ -10,12 +10,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Remove root keymap for lazygit
-vim.keymap.set("n", "<leader>gg", function()
-  Snacks.lazygit()
-end, { desc = "Lazygit (cwd)" })
-vim.keymap.set("n", "<leader>gl", function()
-  Snacks.lazygit.log()
-end, { desc = "Lazygit Log" })
+-- vim.keymap.set("n", "<leader>gg", function()
+--   Snacks.lazygit()
+-- end, { desc = "Lazygit (cwd)" })
+-- vim.keymap.set("n", "<leader>gl", function()
+--   Snacks.lazygit.log()
+-- end, { desc = "Lazygit Log" })
 -- vim.keymap.del("n", "<leader>gG")
 -- vim.keymap.del("n", "<leader>gL")
 

@@ -1,5 +1,4 @@
 return {
-  { import = "lazyvim.plugins.extras.lang.zig" },
   {
     "neovim/nvim-lspconfig",
     opts = {

@@ -1,5 +1,4 @@
 return {
-  { import = "lazyvim.plugins.extras.lang.rust" },
   {
     "stevearc/conform.nvim",
     dependencies = { "mason.nvim" },
