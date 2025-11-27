@@ -13,6 +13,7 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 -- vim.o.shell = "bash"
 -- vim.o.shellcmdflag = "-NoProfile -NoLogo -Command"
 
+vim.g.root_spec = { "cwd" }
 vim.o.scrolloff = 12
 
 vim.o.clipboard = ""
