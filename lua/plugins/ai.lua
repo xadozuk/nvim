@@ -87,7 +87,7 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-3.7-sonnet",
+          model = "claude-4.0-sonnet",
         },
       },
       selector = {
