@@ -6,7 +6,6 @@ return {
     ---@type render.md.UserConfig
     opts = {
       pipe_table = {
-        render_modes = true,
         cell = "trimmed",
       },
     },

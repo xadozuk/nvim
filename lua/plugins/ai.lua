@@ -30,7 +30,7 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-4.0-sonnet",
+          model = "claude-sonnet-4",
         },
       },
       windows = {
