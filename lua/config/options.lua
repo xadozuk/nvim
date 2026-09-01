@@ -10,6 +10,8 @@ vim.cmd("autocmd FileType ruby setlocal indentkeys-=.")
 -- Python specific options
 vim.g.lazyvim_python_lsp = "basedpyright"
 
+-- vim.g.lazyvim_rust_diagnostics = "bacon-ls"
+
 -- vim.o.shell = "bash"
 -- vim.o.shellcmdflag = "-NoProfile -NoLogo -Command"
 
@@ -30,4 +32,4 @@ vim.g.clipboard = {
   cache_enabled = 1,
 }
 
-vim.lsp.set_log_level("off")
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
