@@ -50,3 +50,103 @@ vim.api.nvim_create_user_command("ConformToggle", function()
 end, {
   desc = "Toggle format on save",
 })
+
+function Yaml_add_crds(bufnr)
+  bufnr = bufnr or 0
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local resources = {}
+  local current = { line = nil }
+
+  for i, line in ipairs(lines) do
+    if line:match("^kind:") then
+      current.kind = line:match("^kind:%s*(.+)")
+      if not current.line then
+        current.line = i
+      end
+    elseif line:match("^apiVersion:") then
+      current.apiVersion = line:match("^apiVersion:%s*(.+)")
+      if not current.line then
+        current.line = i
+      end
+    elseif line:match("^%-%-%-") then
+      if current.apiVersion and current.kind then
+        -- Split apiVersion into group and version
+        local group, version
+        if current.apiVersion:find("/") then
+          group, version = current.apiVersion:match("(.+)/(.+)")
+        else
+          group = ""
+          version = current.apiVersion
+        end
+
+        table.insert(resources, {
+          kind = current.kind,
+          apiVersion = current.apiVersion,
+          apiGroup = group,
+          version = version,
+          line = current.line,
+        })
+      end
+      current = { line = nil }
+    end
+  end
+
+  -- Don't forget to check the last section
+  if current.apiVersion and current.kind then
+    local group, version
+    if current.apiVersion:find("/") then
+      group, version = current.apiVersion:match("(.+)/(.+)")
+    else
+      group = ""
+      version = current.apiVersion
+    end
+
+    table.insert(resources, {
+      kind = current.kind,
+      apiVersion = current.apiVersion,
+      apiGroup = group,
+      version = version,
+      line = current.line,
+    })
+  end
+
+  -- Define core Kubernetes API groups
+  local core_api_groups = {
+    [""] = true, -- core group (v1)
+    ["apps"] = true,
+    ["batch"] = true,
+    ["autoscaling"] = true,
+    ["networking.k8s.io"] = true,
+    ["policy"] = true,
+    ["rbac.authorization.k8s.io"] = true,
+    ["storage.k8s.io"] = true,
+  }
+
+  -- Add comments before CRD resources
+  local lines_to_add = {}
+  for _, resource in ipairs(resources) do
+    -- If the API group is not in core_api_groups, it's likely a CRD
+    if resource.apiGroup ~= "" and not core_api_groups[resource.apiGroup] then
+      -- Construct URL based on apiGroup and version
+      local url = string.format(
+        "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/%s/%s_%s.json",
+        resource.apiGroup,
+        resource.kind:lower(),
+        resource.version
+      )
+      local modeline = string.format("# yaml-language-server: $schema=%s", url)
+      -- Check if the modeline already exists in the previous line
+      local prev_line = vim.api.nvim_buf_get_lines(bufnr, resource.line - 2, resource.line - 1, false)[1]
+      if not prev_line or not prev_line:match("# yaml%-language%-server: %$schema=") then
+        lines_to_add[resource.line] = modeline
+      end
+    end
+  end
+
+  -- Insert the comments
+  local offset = 0
+  for line_num, comment in pairs(lines_to_add) do
+    vim.api.nvim_buf_set_lines(bufnr, line_num - 1 + offset, line_num - 1 + offset, false, { comment })
+    offset = offset + 1
+  end
+end
