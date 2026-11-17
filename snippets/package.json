@@ -1,0 +1,15 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": ["yaml", "helm"],
+        "path": "./kubernetes-flux-crds.json"
+      },
+      {
+        "language": ["yaml", "helm"],
+        "path": "./kubernetes-gateway-api.json"
+      }
+    ]
+  }
+}

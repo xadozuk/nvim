@@ -1,0 +1,148 @@
+{
+  "k8s-flux-helmrepository": {
+    "prefix": "k-flux-helmrepo",
+    "description": "Flux HelmRepository (HTTP/S)",
+    "body": [
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/source.toolkit.fluxcd.io/helmrepository_v1.json",
+      "apiVersion: source.toolkit.fluxcd.io/v1",
+      "kind: HelmRepository",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  interval: ${3:1h}",
+      "  url: ${4:https://charts.example.com}",
+      "$0"
+    ]
+  },
+  "k8s-flux-helmrepository-oci": {
+    "prefix": "k-flux-helmrepo-oci",
+    "description": "Flux HelmRepository (OCI)",
+    "body": [
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/source.toolkit.fluxcd.io/helmrepository_v1.json",
+      "apiVersion: source.toolkit.fluxcd.io/v1",
+      "kind: HelmRepository",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  type: oci",
+      "  interval: ${3:1h}",
+      "  url: oci://${4:ghcr.io/org/charts}",
+      "$0"
+    ]
+  },
+  "k8s-flux-helmrelease": {
+    "prefix": "k-flux-helmrelease",
+    "description": "Flux HelmRelease (chart from a HelmRepository)",
+    "body": [
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2.json",
+      "apiVersion: helm.toolkit.fluxcd.io/v2",
+      "kind: HelmRelease",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:namespace}",
+      "spec:",
+      "  interval: ${3:30m}",
+      "  chart:",
+      "    spec:",
+      "      chart: ${4:chart}",
+      "      version: \"${5:*}\"",
+      "      sourceRef:",
+      "        kind: HelmRepository",
+      "        name: ${6:repository}",
+      "        namespace: ${7:flux-system}",
+      "      interval: ${8:12h}",
+      "  install:",
+      "    remediation:",
+      "      retries: 3",
+      "  upgrade:",
+      "    remediation:",
+      "      retries: 3",
+      "  values:",
+      "    $0"
+    ]
+  },
+  "k8s-flux-helmrelease-chartref": {
+    "prefix": "k-flux-helmrelease-chartref",
+    "description": "Flux HelmRelease (chartRef to an OCIRepository)",
+    "body": [
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2.json",
+      "apiVersion: helm.toolkit.fluxcd.io/v2",
+      "kind: HelmRelease",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:namespace}",
+      "spec:",
+      "  interval: ${3:30m}",
+      "  chartRef:",
+      "    kind: OCIRepository",
+      "    name: ${4:repository}",
+      "    namespace: ${5:flux-system}",
+      "  values:",
+      "    $0"
+    ]
+  },
+  "k8s-flux-gitrepository": {
+    "prefix": "k-flux-gitrepo",
+    "description": "Flux GitRepository",
+    "body": [
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/source.toolkit.fluxcd.io/gitrepository_v1.json",
+      "apiVersion: source.toolkit.fluxcd.io/v1",
+      "kind: GitRepository",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  interval: ${3:5m}",
+      "  url: ${4:https://github.com/org/repo}",
+      "  ref:",
+      "    branch: ${5:main}",
+      "  secretRef:",
+      "    name: ${6:git-credentials}",
+      "$0"
+    ]
+  },
+  "k8s-flux-ocirepository": {
+    "prefix": "k-flux-ocirepo",
+    "description": "Flux OCIRepository",
+    "body": [
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/source.toolkit.fluxcd.io/ocirepository_v1.json",
+      "apiVersion: source.toolkit.fluxcd.io/v1",
+      "kind: OCIRepository",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  interval: ${3:10m}",
+      "  url: oci://${4:ghcr.io/org/artifact}",
+      "  ref:",
+      "    ${5:tag}: ${6:latest}",
+      "$0"
+    ]
+  },
+  "k8s-flux-kustomization": {
+    "prefix": "k-flux-ks",
+    "description": "Flux Kustomization (kustomize.toolkit.fluxcd.io)",
+    "body": [
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json",
+      "apiVersion: kustomize.toolkit.fluxcd.io/v1",
+      "kind: Kustomization",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  interval: ${3:10m}",
+      "  retryInterval: ${4:1m}",
+      "  timeout: ${5:5m}",
+      "  path: ${6:./}",
+      "  prune: ${7:true}",
+      "  wait: ${8:true}",
+      "  sourceRef:",
+      "    kind: ${9:GitRepository}",
+      "    name: ${10:flux-system}",
+      "  targetNamespace: ${11:namespace}",
+      "$0"
+    ]
+  }
+}
