@@ -18,18 +18,18 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.root_spec = { "cwd" }
 vim.o.scrolloff = 12
 
-vim.o.clipboard = ""
-vim.g.clipboard = {
-  name = "win32yank-wsl",
-  copy = {
-    ["+"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i",
-    ["*"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i",
-  },
-  paste = {
-    ["+"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o",
-    ["*"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o",
-  },
-  cache_enabled = 1,
-}
+-- vim.o.clipboard = ""
+-- vim.g.clipboard = {
+--   name = "win32yank-wsl",
+--   copy = {
+--     ["+"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i",
+--     ["*"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i",
+--   },
+--   paste = {
+--     ["+"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o",
+--     ["*"] = "/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o",
+--   },
+--   cache_enabled = 1,
+-- }
 
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
